@@ -1,4 +1,4 @@
-//  Copyright 2022 Daniel Stamer, Wietse Venema
+//  Copyright 2023 Google LLC
 
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -70,7 +70,11 @@ func getMetadata(resource string) ([]byte, error) {
 		"Metadata-Flavor": {"Google"},
 	}
 
-	request, err := http.NewRequest("GET", fmt.Sprintf("http://metadata.google.internal/%s", resource), nil)
+	request, err := http.NewRequest(
+		"GET",
+		fmt.Sprintf("http://metadata.google.internal/%s", resource),
+		nil,
+	)
 	if err != nil {
 		log.Printf("error: %v", err)
 		return []byte{}, err
